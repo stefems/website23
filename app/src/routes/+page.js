@@ -1,13 +1,16 @@
-import { getPosts } from "$lib/utils/sanity";
+import { getPosts, getHome } from "$lib/utils/sanity";
 import { error } from "@sveltejs/kit";
 
 export const load = async () => {
-  const posts = await getPosts();
-
-  if (posts) {
+  try {
+    const posts = await getPosts();
+    const home = await getHome();
     return {
       posts,
+      home
     };
+  } catch(e) {
+    console.log(e);
   }
 
   throw error(404, "Not found");

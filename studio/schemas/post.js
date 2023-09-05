@@ -35,6 +35,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: "imageAlt",
+      title: "Image Alt",
+      type: "string",
+    }),
+    defineField({
       name: "body",
       title: "Body",
       type: "blockContent",
@@ -42,7 +47,7 @@ export default defineType({
     defineField({
       name: "date",
       title: "Date",
-      type: "text",
+      type: "string",
     }),
     defineField({
       name: "tags",

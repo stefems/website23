@@ -1,17 +1,25 @@
-<script lang="ts">
-	import Card from '../components/Card.svelte';
-	import Welcome from '../components/Welcome.svelte';
-	import type { PageData } from './$types';
+<script>
+	import { onMount } from 'svelte';
+	import { setActiveNav } from '../lib/utils/setActiveNav.js';
+
+	import './home.scss';
 
 	export let data;
+
+	onMount(() => {
+    setActiveNav(window.location.pathname)
+  });
+
 </script>
 
-<section>
-	{#if data.posts.length}
-		{#each data.posts as post}
-			<Card {post} />
+<section class="container">
+	<div class="home">
+		{#each data.home.qAndA as qAndA}
+			<div class="q-and-a">
+				<div class="question">{qAndA.question}</div>
+				<div class="answer">{qAndA.answer}</div>
+			</div>
 		{/each}
-	{:else}
-		<Welcome />
-	{/if}
+		<a href="/blog" class="blog-entry">enter the blog</a>
+	</div>
 </section>

@@ -18,9 +18,24 @@ export const client = createClient({
   apiVersion: "2023-03-20", // date of setup
 });
 
+export async function getHome() {
+  return await client.fetch(
+    groq`*[_type == "home"][0]`
+  );
+}
+
+export async function getTags() {
+  return await client.fetch(
+    groq`*[_type == "tag"]`
+  );
+}
+
 export async function getPosts() {
   return await client.fetch(
-    groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
+    groq`*[_type == "post" && defined(slug.current)] | order(_createdAt asc) {
+      ...,
+      "mainImage": mainImage.asset->url
+    }`
   );
 }
 

@@ -1,0 +1,36 @@
+html {
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  background-color: black;
+  min-height: 100vh;
+  margin: 0;
+  -webkit-scroll-snap-type: y mandatory;
+  -ms-scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
+  &.-no-scroll {
+    overflow-y: hidden;
+  }
+}
+
+.grid {
+  display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	row-gap: 0;
+	column-gap: 24px;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+main {
+  
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
