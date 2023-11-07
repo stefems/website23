@@ -18,6 +18,21 @@ export const client = createClient({
   apiVersion: "2023-03-20", // date of setup
 });
 
+export async function getWork() {
+  return await client.fetch(
+    groq`*[_type == "work"][0] {
+      personal[]-> {
+        ...,
+        "mainImage": mainImage.asset->url
+      },
+      professional[]-> {
+        ...,
+        "mainImage": mainImage.asset->url
+      }
+    }`
+  );
+}
+
 export async function getHome() {
   return await client.fetch(
     groq`*[_type == "home"][0]`

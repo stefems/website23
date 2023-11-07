@@ -1,0 +1,68 @@
+.work-page {
+  min-height: 100vh;
+  margin-top: 92px;
+  padding: 0 48px;
+  @media (max-width: 768px) {
+    padding: 0 24px;
+    margin-top: 127px;
+    flex-direction: column;
+    display: flex;
+  }
+  .toggle {
+    column-gap: 12px;
+    display: flex;
+    margin-bottom: 12px;
+    .middle {
+      color: white;
+      font-size: 24px;
+    }
+    .toggle-button {
+      color: white;
+      font-style: italic;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 18px;
+      &.-active {
+        opacity: 0.6;
+      }
+    }
+  }
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    row-gap: 24px;
+    column-gap: 12px;
+    .project {
+      display: flex;
+      grid-column: 1 / span 9;
+      &.-right {
+        grid-column: 4 / span 9;
+        flex-direction: row-reverse;
+        .project-image {
+          margin-left: 12px;
+          margin-right: 0;
+        }
+      }
+      .project-image {
+        width: 25%;
+        margin-right: 12px;
+      }
+      .info {
+        color: white;
+        font-style: italic;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 24px;
+        .title {
+          margin: 0;
+        }
+        .date {
+          opacity: 0.6;
+          font-style: unset;
+          font-size: 18px;
+        }
+        .body {
+
+        }
+      }
+    }
+  }
+}
