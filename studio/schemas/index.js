@@ -6,4 +6,4 @@ import project from "./project";
 import work from "./work";
 
 
-export const schemaTypes = [tag, post, home, blockContent, project, work];
+export const schemaTypes = [tag, post, project, work, home, blockContent];

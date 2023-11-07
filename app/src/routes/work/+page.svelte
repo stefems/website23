@@ -6,7 +6,6 @@
   let showingProfessional = true;
   let projects = data.work.professional;
   $: projects = showingProfessional ? data.work.professional : data.work.personal;
-  console.log(projects)
 </script>
 
 <div class="work-page">

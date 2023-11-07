@@ -8,10 +8,17 @@ export const dataset = process.env.SANITY_STUDIO_DATASET;
 
 export default defineConfig({
   name: "project-name",
-  title: "Project Name",
+  title: "Website 23",
   projectId,
   dataset,
-  plugins: [deskTool(), visionTool()],
+  plugins: [
+    deskTool({
+      structure: (S) =>
+        S.list()
+          .title('Base')
+          .items([...S.documentTypeListItems().reverse()]),
+    }),
+    visionTool()],
   schema: {
     types: schemaTypes,
   },
