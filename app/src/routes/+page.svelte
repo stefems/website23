@@ -7,7 +7,8 @@
 	export let data;
 
 	onMount(() => {
-    setActiveNav(window.location.pathname)
+    setActiveNav(window.location.pathname);
+		document.body.classList.remove('-no-scroll');
   });
 
 </script>
