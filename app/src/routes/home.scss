@@ -8,9 +8,10 @@
     justify-content: center;
     position: relative;
     .q-and-a {
+      text-shadow: #000 1px 0 10px;
       color: white;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
-      opacity: 0.6;
+      opacity: 1;
       font-size: 28px;
       padding: 44px 88px;
       @media (max-width: 768px) {
@@ -31,6 +32,7 @@
       bottom: 10px;
       left: 0;
       width: 100%;
+      text-shadow: #000 1px 0 10px;
       font-size: 24px;
       font-style: italic;
       color: white;
@@ -42,4 +44,11 @@
     display: flex;
     scroll-snap-align: start;
   }
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
 }

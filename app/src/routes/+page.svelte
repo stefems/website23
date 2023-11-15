@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { setActiveNav } from '../lib/utils/setActiveNav.js';
+	import Experience from '../components/Three/Experience.js'
 
 	import './home.scss';
 
@@ -9,11 +10,14 @@
 	onMount(() => {
     setActiveNav(window.location.pathname);
 		document.body.classList.remove('-no-scroll');
+		const experience = new Experience(document.querySelector('canvas.webgl'))
+		console.log(experience)
   });
 
 </script>
 
 <section class="container">
+	<canvas class="webgl"/>
 	<div class="home">
 		{#each data.home.qAndA as qAndA}
 			<div class="q-and-a">
