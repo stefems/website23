@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-  import { PortableText } from '@portabletext/svelte'
   import { setActiveNav } from '../../lib/utils/setActiveNav.js';
   import './Blog.scss';
   export let posts = [];
@@ -139,8 +138,8 @@
         <span class="no-posts">No posts found</span>
       {/if}
       {#each shownPosts as post}
-        <a href={`/posts/${post.slug.current}`} class="post">
-          <img alt={post.imageAlt} src={post.mainImage} class="post-image"/>
+        <a href={`/blog/${post.slug.current}`} class="post">
+          <img alt={post.mainImage.alt} src={post.mainImage.image} class="post-image"/>
           <div class="post-info">
             <h2 class="post-title">{post.title}</h2>
             <p class="post-description">{post.description}</p>

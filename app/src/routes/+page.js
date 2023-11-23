@@ -2,6 +2,7 @@ import { getPosts, getHome } from "$lib/utils/sanity";
 import { error } from "@sveltejs/kit";
 
 export const load = async () => {
+  console.log('load')
   try {
     const posts = await getPosts();
     const home = await getHome();
@@ -12,6 +13,5 @@ export const load = async () => {
   } catch(e) {
     console.log(e);
   }
-
   throw error(404, "Not found");
 };

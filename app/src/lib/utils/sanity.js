@@ -49,16 +49,45 @@ export async function getPosts() {
   return await client.fetch(
     groq`*[_type == "post" && defined(slug.current)] | order(_createdAt asc) {
       ...,
-      "mainImage": mainImage.asset->url
+      "mainImage": {
+        "image": mainImage.image.asset->url,
+        "alt": mainImage.alt,
+        "label": mainImage.label
+      }
     }`
   );
 }
 
 export async function getPost(slug) {
   return await client.fetch(
-    groq`*[_type == "post" && slug.current == $slug][0]`,
-    {
-      slug,
+    groq`*[_type == "post" && slug.current == $slug][0] {
+      ...,
+      "mainImage": {
+        "image": mainImage.image.asset->url,
+        "alt": mainImage.alt,
+        "label": mainImage.label
+      },
+      tags[]->,
+      body[]{
+        ...,
+        _type == "blockImage" => {
+          image{
+            ...,
+            "url": asset->url
+          }
+        },
+        _type == "blockCarousel" => {
+          images[]{
+            ...,
+            image{
+              ...,
+              "url": asset->url
+            }
+          }
+        }
+      }
+    }`, {
+      slug
     }
   );
 }

@@ -29,15 +29,10 @@ export default defineType({
     defineField({
       name: "mainImage",
       title: "Main image",
-      type: "image",
+      type: "blockImage",
       options: {
         hotspot: true,
       },
-    }),
-    defineField({
-      name: "imageAlt",
-      title: "Image Alt",
-      type: "string",
     }),
     defineField({
       name: "body",

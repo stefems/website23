@@ -1,0 +1,29 @@
+.block-carousel {
+  position: relative;
+  @media (max-width: 768px) {
+    margin: 0 20px;
+  }
+  .arrow {
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    left: -30px;
+    bottom: calc(50% + 30px);
+    &.next {
+      left: unset;
+      right: -30px;
+    }
+  }
+  .carousel-image {
+    width: 100%;
+  }
+  .divider {
+    display: block;
+    margin-top: 22px;
+    color: white;
+    text-align: center;
+  }
+  .label {
+    font-size: 12px;
+  }
+}
