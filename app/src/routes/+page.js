@@ -2,7 +2,6 @@ import { getPosts, getHome } from "$lib/utils/sanity";
 import { error } from "@sveltejs/kit";
 
 export const load = async () => {
-  console.log('load')
   try {
     const posts = await getPosts();
     const home = await getHome();

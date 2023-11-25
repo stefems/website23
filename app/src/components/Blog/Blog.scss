@@ -2,6 +2,7 @@
   min-height: 100vh;
   margin-top: 92px;
   padding: 0 48px;
+  position: relative;
   @media (max-width: 768px) {
     padding: 0 24px;
     margin-top: 127px;
@@ -382,5 +383,12 @@
         
       }
     }
+  }
+  .webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+    z-index: -1;
   }
 }

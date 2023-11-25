@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
   import { setActiveNav } from '../../lib/utils/setActiveNav.js';
+  import Experience from '../../components/Three/Experience.js'
   import './Blog.scss';
   export let posts = [];
   export let tags = [];
@@ -20,6 +21,7 @@
   onMount(() => {
     setActiveNav(window.location.pathname);
     document.body.classList.add('-no-scroll');
+    // const experience = new Experience(document.querySelector('canvas.webgl'), "THE BLOG", '#ffffff01')
   });
 
   function toggleTags() {
@@ -73,6 +75,7 @@
 </script>
 
 <div class="blog-component grid">
+  <canvas class="webgl"/>
   <div class="filter-sort">
     <button
       class="mobile-toggle"

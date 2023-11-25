@@ -1,10 +1,17 @@
 <script>
 	import './post.scss';
+	import { onMount } from 'svelte';
+	import { setActiveNav } from '../../../lib/utils/setActiveNav.js';
 	import { PortableText } from '@portabletext/svelte'
 	import BlockCarousel from '../../../components/BlockCarousel/BlockCarousel.svelte'
 	import BlockImage from '../../../components/BlockImage/BlockImage.svelte'
 	export let data;
-	console.log(data)
+
+	onMount(() => {
+    setActiveNav('/');
+		document.body.classList.remove('-no-scroll');
+  });
+
 </script>
 
 <section class="page-post">

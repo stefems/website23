@@ -10,7 +10,7 @@
 	onMount(() => {
     setActiveNav(window.location.pathname);
 		document.body.classList.remove('-no-scroll');
-		// const experience = new Experience(document.querySelector('canvas.webgl'))
+		// const experience = new Experience(document.querySelector('canvas.webgl'), "stefan's website", "lime")
   });
 
 </script>

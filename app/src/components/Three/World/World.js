@@ -4,7 +4,7 @@ import Text from './Text.js'
 
 export default class World
 {
-    constructor()
+    constructor(text, color)
     {
         this.experience = new Experience()
         this.scene = this.experience.scene
@@ -14,7 +14,7 @@ export default class World
         // this.resources.on('ready', () =>
         // {
         // Setup
-        this.text = new Text()
+        this.text = new Text(text, color)
         this.environment = new Environment()
         // })
     }

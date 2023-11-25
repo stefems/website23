@@ -6,13 +6,13 @@ import Time from './Utils/Time.js'
 import Camera from './Camera.js'
 import Renderer from './Renderer.js'
 import World from './World/World.js'
-import Resources from './Utils/Resources.js'
+// import Resources from './Utils/Resources.js'
 
 let instance = null
 
 export default class Experience
 {
-  constructor(_canvas)
+  constructor(_canvas, text, color)
   {
       // Singleton
       if(instance)
@@ -36,7 +36,7 @@ export default class Experience
       // this.resources = new Resources(sources)
       this.camera = new Camera()
       this.renderer = new Renderer()
-      this.world = new World()
+      this.world = new World(text, color)
 
       // Resize event
       this.sizes.on('resize', () =>

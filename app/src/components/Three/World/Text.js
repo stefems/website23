@@ -5,13 +5,15 @@ import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 
 
 export default class Text{
-  constructor(){
+  constructor(phrase, color){
     this.experience = new Experience()
     this.scene = this.experience.scene
     this.resources = this.experience.resources
     this.time = this.experience.time
     this.debug = this.experience.debug
 
+    this.phrase = phrase
+    this.color = color
     this.text = null
     this.set()
   }
@@ -24,7 +26,7 @@ export default class Text{
       {
           // Text
           const textGeometry = new TextGeometry(
-              `STEFAN'S WEBSITE`,
+              this.phrase,
               {
                   font: font,
                   size: 0.5,
@@ -39,7 +41,11 @@ export default class Text{
           )
           textGeometry.center()
   
-          this.text = new THREE.Mesh(textGeometry, new THREE.MeshBasicMaterial({ color: 'lime' }))
+          this.text = new THREE.Mesh(textGeometry, new THREE.MeshBasicMaterial({
+              color: this.color,
+              transparent: true,
+              opacity: 0.1
+            }))
           this.scene.add(this.text)
       }
   )
