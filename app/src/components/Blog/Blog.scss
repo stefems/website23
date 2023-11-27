@@ -303,6 +303,13 @@
         flex-direction: column;
         row-gap: 12px;
       }
+      .loading {
+        display: flex;
+        justify-content: center;
+        grid-column: 1 / span 3;
+        width: 100%;
+        align-items: center;
+      }
       &:hover {
         .post-title {
           text-decoration: underline;
@@ -363,7 +370,7 @@
           }
         }
         .date {
-          margin-top: auto;
+          margin-top: 16px;
           @media (max-width: 768px) {
             margin-left: auto;
           }

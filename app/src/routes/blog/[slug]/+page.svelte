@@ -1,6 +1,7 @@
 <script>
 	import './post.scss';
 	import { onMount } from 'svelte';
+	import { SyncLoader } from 'svelte-loading-spinners';
 	import { setActiveNav } from '../../../lib/utils/setActiveNav.js';
 	import { PortableText } from '@portabletext/svelte'
 	import BlockCarousel from '../../../components/BlockCarousel/BlockCarousel.svelte'
@@ -12,10 +13,25 @@
 		document.body.classList.remove('-no-scroll');
   });
 
+	function preload(image) {
+		return new Promise((resolve) => {
+			let img = new Image()
+			img.onload = resolve
+			img.src = image
+		})
+  }
+	const loadedMainImage = preload(data.mainImage.image)
+
 </script>
 
 <section class="page-post">
-	<img alt={data.mainImage.alt} src={data.mainImage.image} class="post-image"/>
+	{#await loadedMainImage}
+		<div class="loading">
+			<SyncLoader size="30" color="lime" unit="px" duration="1s" />
+		</div>
+	{:then}
+		<img alt={data.mainImage.alt} src={data.mainImage.image} class="post-image"/>
+	{/await}
 	{#if data.mainImage.label}
 		<div class="main-attribution">
 			<PortableText

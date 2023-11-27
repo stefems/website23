@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+  import { SyncLoader } from 'svelte-loading-spinners';
   import { setActiveNav } from '../../lib/utils/setActiveNav.js';
   import Experience from '../../components/Three/Experience.js'
   import './Blog.scss';
@@ -13,14 +14,16 @@
   let noTagsSelected = true;
   let showAddTags = false;
   let showMobileMenu = false;
+  let resolvedImages = new Promise(() => '');
   let activeTags = tags.reduce((reduction, current) => {
     reduction[current.title] = false;
     return reduction;
   }, {});
-
   onMount(() => {
     setActiveNav(window.location.pathname);
     document.body.classList.add('-no-scroll');
+    const imageUrls = posts.map(({ mainImage }) => mainImage.image)
+    resolvedImages = preload(imageUrls)
     // const experience = new Experience(document.querySelector('canvas.webgl'), "THE BLOG", '#ffffff01')
   });
 
@@ -71,6 +74,17 @@
         return dateB - dateA;
       }
     });
+  }
+
+  function preload(images) {
+    const promises = images.map((image) => {
+      return new Promise((resolve) => {
+          let img = new Image()
+          img.onload = resolve
+          img.src = image
+      })
+    })
+    return Promise.all(promises)
   }
 </script>
 
@@ -142,7 +156,13 @@
       {/if}
       {#each shownPosts as post}
         <a href={`/blog/${post.slug.current}`} class="post">
-          <img alt={post.mainImage.alt} src={post.mainImage.image} class="post-image"/>
+          {#await resolvedImages}
+            <div class="loading">
+              <SyncLoader size="30" color="lime" unit="px" duration="1s" />
+            </div>
+          {:then}
+            <img alt={post.mainImage.alt} src={post.mainImage.image} class="post-image"/>
+          {/await}
           <div class="post-info">
             <h2 class="post-title">{post.title}</h2>
             <p class="post-description">{post.description}</p>
