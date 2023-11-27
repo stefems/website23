@@ -29,7 +29,7 @@ export default class Text{
               this.phrase,
               {
                   font: font,
-                  size: 0.5,
+                  size: 2,
                   height: 0.2,
                   curveSegments: 12,
                   bevelEnabled: true,
@@ -51,7 +51,7 @@ export default class Text{
   )
   }
   update() {
-    if (this.text) {
+    if (this.text && this.text.scale.y < 3) {
       // this.text.rotation.y = Math.sin(this.time.elapsed * 0.001)
       // this.text.scale.x = Math.sin(this.time.elapsed * 0.001)
       this.text.scale.y = this.time.elapsed * 0.0001 * 10

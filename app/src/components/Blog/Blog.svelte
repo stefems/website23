@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
   import { SyncLoader } from 'svelte-loading-spinners';
   import { setActiveNav } from '../../lib/utils/setActiveNav.js';
-  import Experience from '../../components/Three/Experience.js'
+  import BigText from '../../components/BigText/BigText.svelte'
   import './Blog.scss';
   export let posts = [];
   export let tags = [];
@@ -13,7 +13,6 @@
   let sortBy = selectOptions[0];
   let noTagsSelected = true;
   let showAddTags = false;
-  let showMobileMenu = false;
   let resolvedImages = new Promise(() => '');
   let activeTags = tags.reduce((reduction, current) => {
     reduction[current.title] = false;
@@ -24,15 +23,10 @@
     document.body.classList.add('-no-scroll');
     const imageUrls = posts.map(({ mainImage }) => mainImage.image)
     resolvedImages = preload(imageUrls)
-    // const experience = new Experience(document.querySelector('canvas.webgl'), "THE BLOG", '#ffffff01')
   });
 
   function toggleTags() {
     showAddTags = !showAddTags;
-  }
-
-  function toggleMobileMenu() {
-    showMobileMenu = !showMobileMenu;
   }
 
   function toggleTag(title) {
@@ -89,16 +83,9 @@
 </script>
 
 <div class="blog-component grid">
-  <canvas class="webgl"/>
+  <BigText text={`THE BLOG`}/>
   <div class="filter-sort">
-    <button
-      class="mobile-toggle"
-      on:click={toggleMobileMenu}
-    >
-      Filter & Sort
-      <span class={"arrow " + (showMobileMenu ? '-up' : '')}/>
-    </button>
-    <div class={"sort " + (showMobileMenu ? '-shown' : '')}>
+    <div class={"sort"}>
       <span class="label">sort by:</span>
       <select
         on:change={updateSort}
@@ -110,7 +97,7 @@
         {/each}
       </select>
     </div>
-    <div class={"filter " + (showMobileMenu ? '-shown' : '')}>
+    <div class={"filter"}>
       <span class="label">filter via tags:</span>
       <button on:click={toggleTags} class="add-tag-button">
         <span class="plus"/>
@@ -138,18 +125,15 @@
         {/if}
         {#each Object.entries(activeTags) as tag}
           {#if tag[1]}
-            <div class="shown-tag">
+            <button class="shown-tag" on:click={() => toggleTag(tag[0])}>
               {tag[0]}
-              <button class="remove-button" on:click={() => toggleTag(tag[0])}>
-                &#x2715
-              </button>
-            </div>
+            </button>
           {/if}
         {/each}
       </div>
     </div>
   </div>
-  <div class={"scroll-area " + (showMobileMenu ? '-menu-shown ' : '') + (Object.entries(activeTags).length !== 0 ? '-filters-shown ' : '')}>
+  <div class={"scroll-area " + (Object.entries(activeTags).length !== 0 ? '-filters-shown ' : '')}>
     <div class="posts">
       {#if !noTagsSelected && shownPosts.length === 0}
         <span class="no-posts">No posts found</span>
