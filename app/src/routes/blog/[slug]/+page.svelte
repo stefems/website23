@@ -12,6 +12,20 @@
 	onMount(() => {
     setActiveNav('/');
 		document.body.classList.remove('-no-scroll');
+		//<meta property="og:title" content="Structured data using Schema.org: the Ultimate Guide" />
+		const ogTitle = document.createElement('meta')
+		ogTitle.setAttribute('property', 'og:title');
+		ogTitle.setAttribute('content', data.title);
+		const ogDescription = document.createElement('meta')
+		ogTitle.setAttribute('property', 'og:description');
+		ogTitle.setAttribute('content', data.description);
+		const ogImage = document.createElement('meta')
+		ogTitle.setAttribute('property', 'og:image');
+		ogTitle.setAttribute('content', data.mainImage.image);
+		document.head.append(ogTitle)
+		document.head.append(ogDescription)
+		document.head.append(ogImage)
+
   });
 
 	function preload(image) {
