@@ -11,6 +11,16 @@
   left: 0;
   line-height: 375px;
   font-weight: 600;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
+  &.-vertical {
+    writing-mode: tb;
+    text-align: left;
+    width: unset;
+    font-size: 28vh;
+    line-height: 28vh;
+  }
+  &.-spread {
+    width: 100vw;
+  }
 }

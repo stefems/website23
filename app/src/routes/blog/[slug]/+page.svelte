@@ -6,6 +6,7 @@
 	import { PortableText } from '@portabletext/svelte'
 	import BlockCarousel from '../../../components/BlockCarousel/BlockCarousel.svelte'
 	import BlockImage from '../../../components/BlockImage/BlockImage.svelte'
+	import BigText from '../../../components/BigText/BigText.svelte';
 	export let data;
 
 	onMount(() => {
@@ -25,6 +26,7 @@
 </script>
 
 <section class="page-post">
+	<BigText text={data.title} vertical={true}/>
 	{#await loadedMainImage}
 		<div class="loading">
 			<SyncLoader size="30" color="lime" unit="px" duration="1s" />

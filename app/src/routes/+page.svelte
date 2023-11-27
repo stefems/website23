@@ -1,8 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { setActiveNav } from '../lib/utils/setActiveNav.js';
-	import Experience from '../components/Three/Experience.js'
-
+	import BigText from '../components/BigText/BigText.svelte';
 	import './home.scss';
 
 	export let data;
@@ -10,13 +9,12 @@
 	onMount(() => {
     setActiveNav(window.location.pathname);
 		document.body.classList.remove('-no-scroll');
-		// const experience = new Experience(document.querySelector('canvas.webgl'), "stefan's website", "lime")
   });
 
 </script>
 
 <section class="container">
-	<canvas class="webgl"/>
+	<BigText text="web site" />
 	<div class="home">
 		{#each data.home.qAndA as qAndA}
 			<div class="q-and-a">
