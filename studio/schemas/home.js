@@ -24,11 +24,26 @@ export default defineType({
         ]
       }]
     }),
+    defineField({
+      name: "ogTitle",
+      title: "OG Title",
+      type: "string"
+    }),
+    defineField({
+      name: "ogDescription",
+      title: "OG Description",
+      type: "string"
+    }),
+    defineField({
+      name: "ogImage",
+      title: "OG Image",
+      type: "image"
+    })
   ],
 
   preview: {
     prepare() {
-      return { title: 'Home' };
+      return { title: "Home" };
     }
   }
 });

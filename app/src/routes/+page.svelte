@@ -3,6 +3,7 @@
 	import { setActiveNav } from '../lib/utils/setActiveNav.js';
 	import BigText from '../components/BigText/BigText.svelte';
 	import './home.scss';
+	import Head from '../components/Head/Head.svelte';
 
 	export let data;
 
@@ -14,6 +15,7 @@
 </script>
 
 <section class="container">
+	<Head data={data.home} />
 	<BigText text="web site" />
 	<div class="home">
 		{#each data.home.qAndA as qAndA}

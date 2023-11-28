@@ -2,6 +2,7 @@
   import { PortableText } from '@portabletext/svelte';
   import { setActiveNav } from '../../lib/utils/setActiveNav.js';
   import { SyncLoader } from 'svelte-loading-spinners';
+  import Head from '../../components/Head/Head.svelte';
   import { onMount } from 'svelte';
   import './work.scss';
 	import BigText from '../../components/BigText/BigText.svelte';
@@ -33,6 +34,7 @@
 </script>
 
 <div class="work-page">
+  <Head data={data.work} />
   <BigText text="the work" vertical={true} spread={true}/>
   <div class="toggle">
     <button

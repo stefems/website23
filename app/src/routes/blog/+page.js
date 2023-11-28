@@ -1,8 +1,10 @@
-import { getPosts, getTags } from "$lib/utils/sanity";
+import { getPosts, getTags, getBlog } from "$lib/utils/sanity";
 import { error } from "@sveltejs/kit";
 
 export const load = async () => {
   try {
+    // todo promise all
+    const blog = await getBlog();
     const posts = await getPosts();
     const tags = await getTags();
     const tagsById = tags.reduce((reduction, tag) => {
@@ -17,7 +19,8 @@ export const load = async () => {
     });
     return {
       posts,
-      tags
+      tags,
+      blog
     };
   } catch(e) {
     console.log(e);

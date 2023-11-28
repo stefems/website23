@@ -18,9 +18,24 @@ export const client = createClient({
   apiVersion: "2023-03-20", // date of setup
 });
 
+export async function getPage(name) {
+  // console.log(name)
+  const map = {
+    'blog': getBlog,
+    'work': getWork,
+    'home': getHome
+  }
+  if (map[name]) {
+    return await map[name]()
+  } else {
+    throw new Error('404: Page not fond')
+  }
+}
+
 export async function getWork() {
   return await client.fetch(
     groq`*[_type == "work"][0] {
+      _type,
       personal[]-> {
         ...,
         "mainImage": mainImage.asset->url
@@ -28,14 +43,34 @@ export async function getWork() {
       professional[]-> {
         ...,
         "mainImage": mainImage.asset->url
-      }
+      },
+      ogDescription,
+      ogTitle,
+      "ogImage": ogImage.asset->url
+    }`
+  );
+}
+
+export async function getBlog() {
+  return await client.fetch(
+    groq`*[_type == "blog"][0] {
+      _type,
+      ogDescription,
+      ogTitle,
+      "ogImage": ogImage.asset->url
     }`
   );
 }
 
 export async function getHome() {
   return await client.fetch(
-    groq`*[_type == "home"][0]`
+    groq`*[_type == "home"][0] {
+      ...,
+      _type,
+      ogDescription,
+      ogTitle,
+      "ogImage": ogImage.asset->url
+    }`
   );
 }
 
@@ -62,6 +97,7 @@ export async function getPost(slug) {
   return await client.fetch(
     groq`*[_type == "post" && slug.current == $slug][0] {
       ...,
+      _type,
       "mainImage": {
         "image": mainImage.image.asset->url,
         "alt": mainImage.alt,

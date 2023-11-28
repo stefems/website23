@@ -1,6 +1,7 @@
 <script>
 	import './post.scss';
 	import { onMount } from 'svelte';
+	import Head from '../../../components/Head/Head.svelte';
 	import { SyncLoader } from 'svelte-loading-spinners';
 	import { setActiveNav } from '../../../lib/utils/setActiveNav.js';
 	import { PortableText } from '@portabletext/svelte'
@@ -26,6 +27,7 @@
 </script>
 
 <section class="page-post">
+	<Head data={data} />
 	<BigText text={data.title} vertical={true}/>
 	{#await loadedMainImage}
 		<div class="loading">
