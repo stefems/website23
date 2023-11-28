@@ -19,7 +19,6 @@ export const client = createClient({
 });
 
 export async function getPage(name) {
-  // console.log(name)
   const map = {
     'blog': getBlog,
     'work': getWork,
