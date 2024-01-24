@@ -10,7 +10,7 @@
   const selectOptions = [
     "recent first", "oldest first",
   ];
-  let sortBy = selectOptions[0];
+  let sortBy = selectOptions[1];
   let noTagsSelected = true;
   let showAddTags = false;
   let resolvedImages = new Promise(() => '');
