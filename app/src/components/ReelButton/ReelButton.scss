@@ -1,0 +1,53 @@
+.button {
+    border: solid white 5px;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+    &:hover {
+        background-color: white;
+        border-color: black;
+        .dots {
+            animation: move .1s linear infinite;
+        }
+        .dot {
+            background-color: black;
+        }
+        .text {
+            color: black;
+        }
+    }
+    .dots {
+        position: absolute;
+        width: 20%;
+        display: flex;
+        column-gap: 4px;
+        left: -2px;
+        &.top {
+            top: 5px;
+        }
+        &.bottom {
+            bottom: 5px;
+        }
+    }
+    .dot {
+        min-width: 4px;
+        height: 6px;
+        border-radius: 5px;
+        background-color: white;
+    }
+    .text {
+        color: white;
+        font-family: serif;
+        font-size: 16px;
+        font-style: italic;
+    }
+}
+
+@keyframes move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }

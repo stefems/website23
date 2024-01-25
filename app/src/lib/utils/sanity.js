@@ -68,7 +68,14 @@ export async function getHome() {
       _type,
       ogDescription,
       ogTitle,
-      "ogImage": ogImage.asset->url
+      "ogImage": ogImage.asset->url,
+      projects[]->{
+        ...,
+        video {
+          ...,
+          asset->
+        }
+      }
     }`
   );
 }

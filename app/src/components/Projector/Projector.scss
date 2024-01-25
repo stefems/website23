@@ -1,0 +1,44 @@
+.projector-container {
+    position: relative;
+    padding-top: 30px;
+    display: flex;
+    .smaller {
+        left: 4px;
+        top: 5px;
+        min-width: 20px;
+        height: 20px;
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        border: solid black 1px;
+        animation: rotate .5s linear infinite;
+        .dot {
+            border-radius: 50%;
+            background-color: black;
+            height: 6px;
+            width: 6px;
+            display: block;
+            position: relative;
+        }
+        .dot.top {
+            left: calc(50% - 3px);
+            top: 2px;
+        }
+        .dot.left {
+            left: 2px;
+            top: 3px;
+        }
+        .dot.right {
+            left: 11px;
+            top: -2px;
+        }
+    }
+    .larger {
+
+    }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}

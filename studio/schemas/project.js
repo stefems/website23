@@ -11,9 +11,30 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "role",
+      title: "Role",
+      type: "string",
+    }),
+    defineField({
+      name: "image",
+      title: "Main image",
+      type: "blockImage",
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: "mainImage",
       title: "Main image",
       type: "image",
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: "video",
+      title: "Main video",
+      type: "file",
       options: {
         hotspot: true,
       },

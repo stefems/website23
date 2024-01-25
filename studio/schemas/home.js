@@ -38,7 +38,16 @@ export default defineType({
       name: "ogImage",
       title: "OG Image",
       type: "image"
-    })
+    }),
+    defineField({
+      name: "projects",
+      title: "Projects",
+      type: "array",
+      of: [{
+        type: "reference",
+        to: [{ type: "project" }]
+      }]
+    }),
   ],
 
   preview: {
