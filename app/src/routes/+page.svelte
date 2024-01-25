@@ -19,7 +19,7 @@
 		"projectorAlt": "film projector icon",
 		"name": "Stefan Kowal is...",
 		"info": "a tried and tested senior web developer: I can jump onto a project and immediately make crucial fixes and contributions. I can also start a project and organize delivery from beginning to end. With Stink Studios (2020 - 2023) I built and led the building of numerous web experiences. We leveraged React JS, Next JS, CMS systems (Sanity & Contentful), tons of third party services, and gallons of coffee to deliver award-winning online experiences. Our team earned a D&AD Graphite Pencil award for creating an ARG set in the Cyberpunk universe, and we reached massive audiences with Nike's Air Max Day. These experiences helped me become a pro at collaborating with the kind and wonderful design and production teams.",
-		"work": "I'm looking for work! If you're* looking for a senior web developer send me an email.",
+		"work": "I'm looking for work! Send me an email if you're* looking for a senior web developer",
 		"disclaimer": "* I'm not interested in working with Amazon, defense contractors, big social media, or web3/crypto scammers.",
 		"copied": "email copied to clipboard!"
 	}
