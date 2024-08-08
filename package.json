@@ -2,6 +2,10 @@
   "name": "sanity-template-sveltekit-clean",
   "version": "1.0.0",
   "private": true,
+  "engines" : { 
+    "npm" : "<=10.7.1",
+    "node" : "<=18.20.4"
+  },
   "scripts": {
     "postinstall": "echo '\u001b[0;31mThis is not a monorepo. Run commands in /app and /studio individually.\u001b[0m'"
   },
